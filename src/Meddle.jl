@@ -31,7 +31,7 @@ module Meddle
 # Version const, used in `Server` header.
 MEDDLE_VERSION = "0.0"
 
-using Http
+using HttpServer
 export Midware, 
        DefaultHeaders, 
        FileServer, 
