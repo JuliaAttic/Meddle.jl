@@ -33,9 +33,11 @@ MEDDLE_VERSION = "0.0"
 
 using HttpServer
 export Midware, 
-       DefaultHeaders, 
+       DefaultHeaders,
+       URLDecoder,
+       CookieDecoder,
+       BodyDecoder,
        FileServer, 
-       CookieDecoder, 
        NotFound, 
        MidwareStack, 
        handle, 
@@ -67,6 +69,22 @@ DefaultHeaders = Midware() do req::Request, res::Response
     req, res
 end
 
+# URLDecoder
+#
+# Decodes the URI encoding of req.resource.
+# Turns the req.state[:url_query] "foo=hello%20world&bar=fun" 
+# into req.state[:url_params] # => ["foo" => "hello world", "bar" => "fun"]
+# 
+# Should be pretty far forward in the stack, makes URLs and URL strings usable.
+#
+URLDecoder = Midware() do req::Request, res::Response
+    if contains(get(req.state, :url_query, ""), '=')
+        req.state[:url_params] = parsequerystring(req.state[:url_query])
+    end
+    req.resource = decodeURI(req.resource)
+    req, res
+end
+
 # `CookieDecoder` builds `req.state[:cookies]` from `req.headers`.
 #
 # `req.state[:cookies]` will be a dictionary of Symbols to Strings.
@@ -82,6 +100,19 @@ CookieDecoder = Midware() do req::Request, res::Response
         end
     end
     req.state[:cookies] = cookies
+    req, res
+end
+
+# `BodyDecoder` builds `req.state[:data]` from `req.data`.
+#
+# `req.state[:data]` will be a dictionary of Symbols to Strings.
+# This should come fairly early in your stack,
+# before anything that needs to use POST data.
+#
+BodyDecoder = Midware() do req::Request, res::Response
+    if contains(req.data,'=') 
+        req.state[:data] = parsequerystring(req.data)
+    end
     req, res
 end
 
