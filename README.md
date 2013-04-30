@@ -13,19 +13,19 @@ see the instructions in [HttpParser.jl's README](https://github.com/hackerschool
 
 Define a 'stack' of middleware through which incoming `Requests` are processed:
 
-```.jl
-using HttpServer
+~~~~.jl
+sing HttpCommon
 using Meddle
 
-stack = [ DefaultHeaders(), CookieDecoder(), FileServer( pwd() ), NotFound() ]
-
-http = HttpHandler( (req, res) -> handle( stack, req, res ) )
+stack = middleware(DefaultHeaders, CookieDecoder, FileServer(pwd()), NotFound)
+http = HttpHandler((req, res) -> Meddle.handle(stack, req, res))
 
 for event in split("connect read write close error")
-    http.events[event] = ( ( event ) -> ( client, args... ) -> println(client.id,": $event") )( event )
+    http.events[event] = ((event) -> (client, args...) -> println(client.id,": $event"))(event)
 end
-http.events["error"] = ( client, err ) -> println( err )
+http.events["error"] = (client, err) -> println(err)
+http.events["listen"] = (port) -> println("Listening on $port...")
 
-server = Server( http )
-run( server, 8000 )
-```
+server = Server(http)
+run(server, 8000)
+~~~~
