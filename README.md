@@ -1,10 +1,20 @@
-Meddle is Middleware 
-====================
+Meddle
+======
 
-Middleware stack for `Http.jl`.  Define a `stack` of `Midware` through which incoming `Requests` are processed:
+Meddle is a middleware stack for use with [HttpServer.jl](https://github.com/hackerschool/HttpServer.jl).
+
+##Installation:
+
+In the Julia REPL, run: `Pkg.add("Meddle")`.
+You will also need to install Joyent's HTTP parsing library;
+see the instructions in [HttpParser.jl's README](https://github.com/hackerschool/HttpParser.jl).
+
+##Example:
+
+Define a 'stack' of middleware through which incoming `Requests` are processed:
 
 ```.jl
-using Http
+using HttpServer
 using Meddle
 
 stack = [ DefaultHeaders(), CookieDecoder(), FileServer( pwd() ), NotFound() ]
