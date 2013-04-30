@@ -14,7 +14,7 @@ see the instructions in [HttpParser.jl's README](https://github.com/hackerschool
 Define a 'stack' of middleware through which incoming `Requests` are processed:
 
 ~~~~.jl
-sing HttpCommon
+using HttpCommon
 using Meddle
 
 stack = middleware(DefaultHeaders, CookieDecoder, FileServer(pwd()), NotFound)
