@@ -5,9 +5,13 @@ Meddle is a middleware stack for use with [HttpServer.jl](https://github.com/hac
 
 ##Installation:
 
-In the Julia REPL, run: `Pkg.add("Meddle")`.
-You will also need to install Joyent's HTTP parsing library;
-see the instructions in [HttpParser.jl's README](https://github.com/hackerschool/HttpParser.jl).
+```jl
+# in REQUIRE
+Meddle 0.0.1
+
+# in REPL
+julia> Pkg2.add("Meddle")
+```
 
 ##Example:
 
