@@ -84,10 +84,12 @@ end
 # Should be pretty far forward in the stack, makes URLs and URL strings usable.
 #
 URLDecoder = Midware() do req::MeddleRequest, res::Response
+    rq_arr = split(req.http_req.resource, '?')
+    req.state[:resource] = decodeURI(rq_arr[1])
+    (length(rq_arr) > 1) && (req.state[:url_query] = rq_arr[2])
     if contains(get(req.state, :url_query, ""), '=')
         req.state[:url_params] = parsequerystring(req.state[:url_query])
     end
-    req.state[:resource] = decodeURI(req.http_req.resource)
     req, res
 end
 
