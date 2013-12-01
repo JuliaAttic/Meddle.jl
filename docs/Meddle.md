@@ -1,19 +1,15 @@
 # Meddle
 
-Meddle is a middleware stack for use with [HttpServer.jl](https://github.com/hackerschool/HttpServer.jl).
+Meddle is a middleware stack for use with HttpServer.jl.
 
 ## Installation:
 
     :::julia
-    # in REQUIRE
-    Meddle 0.0.1
+    julia> Pkg.add("Meddle")
 
-    # in REPL
-    julia> Pkg2.add("Meddle")
+## Basic Example:
 
-## Example:
-
-Define a 'stack' of middleware through which incoming `Requests` are processed:
+Define a 'stack' of middleware through which incoming `Request`s are processed:
 
     :::julia
     using HttpServer
