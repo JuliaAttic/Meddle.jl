@@ -87,7 +87,7 @@ URLDecoder = Midware() do req::MeddleRequest, res::Response
     rq_arr = split(req.http_req.resource, '?')
     req.state[:resource] = decodeURI(rq_arr[1])
     (length(rq_arr) > 1) && (req.state[:url_query] = rq_arr[2])
-    if contains(get(req.state, :url_query, ""), '=')
+    if '=' in get(req.state, :url_query, "")
         req.state[:url_params] = parsequerystring(req.state[:url_query])
     end
     req, res
@@ -101,7 +101,7 @@ end
 #
 CookieDecoder = Midware() do req::MeddleRequest, res::Response
     cookies = Dict()
-    if has(req.http_req.headers, "Cookie")
+    if haskey(req.http_req.headers, "Cookie")
         for pair in split(req.http_req.headers["Cookie"],"; ")
             kv = split(pair,"=")
             cookies[symbol(kv[1])] = kv[2]
@@ -118,7 +118,7 @@ end
 # before anything that needs to use POST data.
 #
 BodyDecoder = Midware() do req::MeddleRequest, res::Response
-    if contains(req.http_req.data,'=') 
+    if '=' in req.http_req.data
         req.state[:data] = parsequerystring(req.http_req.data)
     end
     req, res
