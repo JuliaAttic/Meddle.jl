@@ -47,7 +47,8 @@ export Midware,
 
 immutable MeddleRequest
     http_req::Request
-    state::Dict
+    state::Dict,
+    params::Dict
 end
 
 # `Midware` only uses the `handler` right now.
