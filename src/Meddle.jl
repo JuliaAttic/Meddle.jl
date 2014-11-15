@@ -47,7 +47,7 @@ export Midware,
 
 immutable MeddleRequest
     http_req::Request
-    state::Dict,
+    state::Dict
     params::Dict
 end
 
