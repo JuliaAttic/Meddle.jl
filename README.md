@@ -3,15 +3,7 @@ Meddle
 
 Meddle is a middleware stack for use with [HttpServer.jl](https://github.com/hackerschool/HttpServer.jl).
 
-##Installation:
-
-```jl
-# in REQUIRE
-Meddle 0.0.1
-
-# in REPL
-julia> Pkg2.add("Meddle")
-```
+**Installation**: `Pkg.add("Meddle")`
 
 ##Example:
 
