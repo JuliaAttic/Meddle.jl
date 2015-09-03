@@ -6,6 +6,7 @@ Meddle
 > **2015-09-03**: This package is deprecated & abandoned. It is not recommended for use.
 > If you'd like to "revive" it, please submit a PR updating the package.
 > Commit access will be given to anyone interested in taking on maintanence and/or development.
+> An alternative package is [Mux.jl](https://github.com/one-more-minute/Mux.jl).
 
 ---
 
