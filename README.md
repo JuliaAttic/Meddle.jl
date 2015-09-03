@@ -1,6 +1,9 @@
 Meddle
 ======
 
+[![Meddle](http://pkg.julialang.org/badges/Meddle_0.3.svg)](http://pkg.julialang.org/?pkg=Meddle&ver=0.3)
+[![Meddle](http://pkg.julialang.org/badges/Meddle_0.4.svg)](http://pkg.julialang.org/?pkg=Meddle&ver=0.4)
+
 Meddle is a middleware stack for use with [HttpServer.jl](https://github.com/hackerschool/HttpServer.jl).
 
 **Installation**: `Pkg.add("Meddle")`
