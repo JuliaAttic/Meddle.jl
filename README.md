@@ -1,10 +1,18 @@
 Meddle
 ======
 
+---
+
+> **2015-09-03**: This package is deprecated & abandoned. It is not recommended for use.
+> If you'd like to "revive" it, please submit a PR updating the package.
+> Commit access will be given to anyone interested in taking on maintanence and/or development.
+
+---
+
 [![Meddle](http://pkg.julialang.org/badges/Meddle_0.3.svg)](http://pkg.julialang.org/?pkg=Meddle&ver=0.3)
 [![Meddle](http://pkg.julialang.org/badges/Meddle_0.4.svg)](http://pkg.julialang.org/?pkg=Meddle&ver=0.4)
 
-Meddle is a middleware stack for use with [HttpServer.jl](https://github.com/hackerschool/HttpServer.jl).
+Meddle is a middleware stack for use with [HttpServer.jl](https://github.com/JuliaWeb/HttpServer.jl).
 
 **Installation**: `Pkg.add("Meddle")`
 
@@ -12,7 +20,7 @@ Meddle is a middleware stack for use with [HttpServer.jl](https://github.com/hac
 
 Define a 'stack' of middleware through which incoming `Requests` are processed:
 
-~~~~.jl
+```julia
 using HttpServer
 using Meddle
 
@@ -27,10 +35,10 @@ http.events["listen"] = (port)->println("Listening on $port...")
 
 server = Server(http)
 run(server, 8000)
-~~~~
+```
 
 
-~~~~
+```
 :::::::::::::
 ::         ::
 :: Made at ::
@@ -39,4 +47,4 @@ run(server, 8000)
      ::
 Hacker School
 :::::::::::::
-~~~~
+```
