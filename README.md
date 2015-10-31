@@ -3,11 +3,13 @@ Meddle
 
 ---
 
-> **2015-09-03**: This package is deprecated & abandoned.
+> **2015-09-03**:
+> This package is deprecated, and does not have an active maintainer.
 > It is not recommended for use in new projects.
-> If you'd like to "revive" it, please submit a PR updating the package.
-> Commit access will be given to anyone interested in taking on maintanence and/or development.
-> An alternative package is [Mux.jl](https://github.com/one-more-minute/Mux.jl).
+> Commit access may be given to anyone interested in taking on reviving,
+> maintaining, or furthering development.
+> If you are interested, please submit a PR that updates the package.
+> An alternative package is [Mux.jl](https://github.com/JuliaWeb/Mux.jl).
 
 ---
 
